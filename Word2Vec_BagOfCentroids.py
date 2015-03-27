@@ -74,7 +74,6 @@ if __name__ == '__main__':
     elapsed = end - start
     print "Time taken for K Means clustering: ", elapsed, "seconds."
 
-
     # Create a Word / Index dictionary, mapping each vocabulary word to
     # a cluster number
     word_centroid_map = dict(zip( model.index2word, idx ))
@@ -99,9 +98,10 @@ if __name__ == '__main__':
     #
 
     # Read data from files
-    train = pd.read_csv( os.path.join(os.path.dirname(__file__), 'data', 'labeledTrainData.tsv'), header=0, delimiter="\t", quoting=3 )
-    test = pd.read_csv(os.path.join(os.path.dirname(__file__), 'data', 'testData.tsv'), header=0, delimiter="\t", quoting=3 )
+    folder = "/Users/keikha/data/kaggle/moviereview/"
 
+    train = pd.read_csv( os.path.join(os.path.dirname(folder), 'labeledTrainData.tsv'), header=0, delimiter="\t", quoting=3 )
+    test = pd.read_csv(os.path.join(os.path.dirname(folder), 'testData.tsv'), header=0, delimiter="\t", quoting=3 )
 
     print "Cleaning training reviews"
     clean_train_reviews = []
@@ -146,7 +146,7 @@ if __name__ == '__main__':
 
     # Fitting the forest may take a few minutes
     print "Fitting a random forest to labeled training data..."
-    forest = forest.fit(train_centroids,train["sentiment"])
+    forest = forest.fit( train_centroids , train["sentiment"])
     result = forest.predict(test_centroids)
 
     # Write the test results

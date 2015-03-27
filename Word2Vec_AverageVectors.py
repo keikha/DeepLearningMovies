@@ -89,10 +89,12 @@ def getCleanReviews(reviews):
 
 if __name__ == '__main__':
 
+    folder = "/Users/keikha/data/kaggle/moviereview/"
+
     # Read data from files
-    train = pd.read_csv( os.path.join(os.path.dirname(__file__), 'data', 'labeledTrainData.tsv'), header=0, delimiter="\t", quoting=3 )
-    test = pd.read_csv(os.path.join(os.path.dirname(__file__), 'data', 'testData.tsv'), header=0, delimiter="\t", quoting=3 )
-    unlabeled_train = pd.read_csv( os.path.join(os.path.dirname(__file__), 'data', "unlabeledTrainData.tsv"), header=0,  delimiter="\t", quoting=3 )
+    train = pd.read_csv( os.path.join(os.path.dirname(folder), 'labeledTrainData.tsv'), header=0, delimiter="\t", quoting=3 )
+    test = pd.read_csv(os.path.join(os.path.dirname(folder), 'testData.tsv'), header=0, delimiter="\t", quoting=3 )
+    unlabeled_train = pd.read_csv( os.path.join(os.path.dirname(folder), "unlabeledTrainData.tsv"), header=0,  delimiter="\t", quoting=3 )
 
     # Verify the number of reviews that were read (100,000 in total)
     print "Read %d labeled train reviews, %d labeled test reviews, " \

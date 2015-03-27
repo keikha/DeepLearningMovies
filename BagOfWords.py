@@ -17,9 +17,10 @@ import pandas as pd
 import numpy as np
 
 if __name__ == '__main__':
-    train = pd.read_csv(os.path.join(os.path.dirname(__file__), 'data', 'labeledTrainData.tsv'), header=0, \
+    folder = "/Users/keikha/data/kaggle/moviereview/"
+    train = pd.read_csv(os.path.join(os.path.dirname(folder),'labeledTrainData.tsv'), header=0, \
                     delimiter="\t", quoting=3)
-    test = pd.read_csv(os.path.join(os.path.dirname(__file__), 'data', 'testData.tsv'), header=0, delimiter="\t", \
+    test = pd.read_csv(os.path.join(os.path.dirname(folder),  'testData.tsv'), header=0, delimiter="\t", \
                    quoting=3 )
 
     print 'The first review is:'
@@ -101,7 +102,7 @@ if __name__ == '__main__':
     output = pd.DataFrame( data={"id":test["id"], "sentiment":result} )
 
     # Use pandas to write the comma-separated output file
-    output.to_csv(os.path.join(os.path.dirname(__file__), 'data', 'Bag_of_Words_model.csv'), index=False, quoting=3)
+    output.to_csv(os.path.join(os.path.dirname(folder), 'Bag_of_Words_model.csv'), index=False, quoting=3)
     print "Wrote results to Bag_of_Words_model.csv"
 
 
